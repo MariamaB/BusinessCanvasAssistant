@@ -1,0 +1,2 @@
+# BusinessCanvasAssistant
+Forschungsprojekt Teil A
