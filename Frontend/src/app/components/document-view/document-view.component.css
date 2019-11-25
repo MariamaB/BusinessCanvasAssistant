@@ -1,0 +1,8 @@
+#documentContainer {
+    flex: 1;
+    margin: 2%;
+}
+
+#documentItem {
+    margin: 0.5%
+}
