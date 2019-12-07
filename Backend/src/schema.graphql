@@ -1,22 +1,22 @@
 type Document {
-	id: ID!
+	id: String!
 	title: String!
 	content: String
 }
 
 type Query {
-	# document: [Document]
+	document: [Document]
 	documents(searchString: String): [Document]
 }
 
 type Mutation {
 	creatDocument(title: String!): Document!
-	editDocument(id: ID!, content: String!): Document
-	deleteDocument(id: ID!): ID!
+	editDocument(id: String!, content: String!): Document
+	deleteDocument(id: String!): String!
 }
 
 type Subscription {
 	documentOnEdit: Document!
-	newDocument: Document!
-	deletedDocument: ID!
+	newDocument: Document
+	deletedDocument: String!
 }
