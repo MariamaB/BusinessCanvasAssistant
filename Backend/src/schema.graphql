@@ -1,7 +1,7 @@
 type Document {
 	id: String!
 	title: String!
-	content: String
+	content: Object
 }
 
 type Query {

@@ -69,6 +69,7 @@ const resolvers = {
 		}
 	},
 	Subscription: {
+
 		newDocument: {
 			subscribe: withFilter(
 				(_, args,{pubsub}) => { 
@@ -79,17 +80,7 @@ const resolvers = {
 					console.log(`Check if filter satisfied ${payload} ${variables}`) // eslint-disable-line no-console
 					return true
 				  }
-			) 
-			// (parent, args, { injector  }) => {
-			// 	try {
-			// 		return injector.get(PubSub).asyncIterator(NEW_DOCUMENT);
-			// 		// .then(() =>{
-            //         //      documents;
-            //         // })
-			// 	} catch (e) {
-			// 	console.log("NewDocument catch block")
-			// 	}
-			// }
+			)
 		},
 		documentOnEdit: {
 			subscribe: (parent, args, { pubsub }) => {
