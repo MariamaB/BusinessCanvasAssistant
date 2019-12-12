@@ -5,8 +5,8 @@
 
 .bmc-card {
     max-width: 90%;
-    align-self: center;
-    height: 100%;
+    /* align-self: center; */
+    height: fit-content;
     margin: 2%;
 }
 
