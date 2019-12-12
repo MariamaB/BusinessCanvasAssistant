@@ -1,22 +1,46 @@
-type Document {
+type BMContent {
+	keyPartners: String, 
+	keyActivities: String, 
+	valueProposition: String, 
+	customerRelationships: String, 
+	customerSegments: String, 
+	keyResources: String, 
+	channels: String, 
+	costStructure: String, 
+	revenueStreams: String
+}
+
+input BMInput {
+	keyPartners: String, 
+	keyActivities: String, 
+	valueProposition: String, 
+	customerRelationships: String, 
+	customerSegments: String, 
+	keyResources: String, 
+	channels: String, 
+	costStructure: String, 
+	revenueStreams: String
+}
+
+type BusinessModel {
 	id: String!
-	title: String!
-	content: String
+	name: String!
+	content: BMContent
 }
 
 type Query {
-	document: [Document]
-	documents(searchString: String): [Document]
+	businessModel: [BusinessModel]
+	businessModels(searchString: String): [BusinessModel]
 }
 
 type Mutation {
-	creatDocument(title: String!): Document!
-	editDocument(id: String!, content: String!): Document
-	deleteDocument(id: String!): String!
+	createBusinessModel(name: String!): BusinessModel!
+	editBusinessModel(id: String!, name: String, content: BMInput): BusinessModel!
+	deleteBusinessModel(id: String!): BusinessModel!
 }
 
 type Subscription {
-	documentOnEdit: Document!
-	newDocument: Document
-	deletedDocument: String!
+	businessModelOnEdit: BusinessModel!
+	newBusinessModel: BusinessModel
+	deletedBusinessModel: BusinessModel!
 }

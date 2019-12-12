@@ -1,111 +1,110 @@
-import documents from './database';
+import businessModels from './database';
 import { PubSub, withFilter } from 'graphql-subscriptions';
 const uuidv1 = require('uuid/v1');
 
-// const NEW_DOCUMENT = gql`
-// mutation creatDocument($title: String!) {
-//   creatDocument(title: $title) {
-// 	id
-// 	title
-// 	content
-//   }
-// }
-// `;
-const NEW_DOCUMENT = 'NEW_DOCUMENT';
-const DELETED_DOCUMENT = 'DELETED_DOCUMENT';
-const DOCUMENT_ON_EDIT = 'DOCUMENT_ON_EDIT';
 
+const NEW_BUSINESS_MODEL = 'NEW_BUSINESS_MODEL';
+const DELETED_BUSINESS_MODEL = 'DELETED_BUSINESS_MODEL';
+const BUSINESS_MODEL_ON_EDIT = 'BUSINESS_MODEL_ON_EDIT';
+
+  
 
 const resolvers = {
 	Query: {
-		documents: (parent, { searchString }) => {
+		businessModels: (parent, { searchString }) => {
 			return !searchString
-				? documents
-				: documents.filter(
-						(document) => document.title.includes(searchString) || document.content.includes(searchString)
+				? businessModels
+				: businessModels.filter(
+						(businessModel) => businessModel.name.includes(searchString)
 					);
 		}
 	},
 	Mutation: {
-		creatDocument: (parent, { title }, { pubsub }) => {
-			const document = {
+		createBusinessModel: (parent, { name }, { pubsub }) => {
+			const businessModel = {
 				id: uuidv1(),
-				title: title,
-				content: ''
+				name: name,
+				content: {
+					keyPartners: '',
+					keyActivities: '',
+					valueProposition: '',
+					customerRelationships: '',
+					CustomerSegments: '',
+					keyResources: '',
+					channels: '',
+					costStructure: '',
+					revenueStreams: ''
+				},
 			};
-			documents.push(document);
+			businessModels.push(businessModel);
 			console.log("try to create!")
 
-			pubsub.publish(NEW_DOCUMENT, {
-				newDocument: document
+			pubsub.publish(NEW_BUSINESS_MODEL, {
+				newBusinessModel: businessModel
 			});
 
-			return document;
+			return businessModel;
 		},
-		editDocument: (parent, { id, content }, { pubsub }) => {
-			let document;
-			documents.forEach((docs) => {
-				if (docs.id === id) {
-					docs.content = content,
-					document = docs;
+		editBusinessModel: (parent, { id, name, content }, { pubsub }) => {
+			console.log("update: " + name);
+			let businessModel;
+			businessModels.forEach((bm) => {
+				if (bm.id === id) {
+					bm.name = name? name: bm.name,
+					bm.content = content? content: bm.content,
+					businessModel = bm;
 					}
 				}
 			);
 
-			pubsub.publish(DOCUMENT_ON_EDIT, {
-				documentOnEdit: document
+			pubsub.publish(BUSINESS_MODEL_ON_EDIT, {
+				businessModelOnEdit: businessModel
 			});
 
-			return document;
+			return businessModel;
 		},
-		deleteDocument: (parent, { id }, { pubsub }) => {
-			// this.documents.splice(documents.indexOf(documents.filter((document) => (document.id = id))[0]), 1);
+		deleteBusinessModel: (parent, { id }, { pubsub }) => {
+			console.log("deleting: " + id)
+			let businessModel = businessModels.find(bm => bm.id = id);
+			console.log("deleting: " +businessModel.name)
+			businessModels.splice(businessModels.indexOf(businessModel), 1);
 
-			pubsub.publish(DELETED_DOCUMENT, {
-				deletedDocument: id
+			pubsub.publish(DELETED_BUSINESS_MODEL, {
+				deletedBusinessModel: businessModel
 			});
 
-			return id;
+			return businessModel;
 		}
 	},
 	Subscription: {
-		newDocument: {
+
+		newBusinessModel: {
 			subscribe: withFilter(
 				(_, args,{pubsub}) => { 
-					console.log('REGISTER TOPIC documentAdded')  // eslint-disable-line no-console
-					return pubsub.asyncIterator([NEW_DOCUMENT]) 
+					console.log('REGISTER TOPIC businessModelAdded')
+					return pubsub.asyncIterator([NEW_BUSINESS_MODEL]) 
 				  },
 				  (payload, variables) => {
-					console.log(`Check if filter satisfied ${payload} ${variables}`) // eslint-disable-line no-console
+					console.log(`Check if filter satisfied ${payload} ${variables}`)
 					return true
 				  }
-			) 
-			// (parent, args, { injector  }) => {
-			// 	try {
-			// 		return injector.get(PubSub).asyncIterator(NEW_DOCUMENT);
-			// 		// .then(() =>{
-            //         //      documents;
-            //         // })
-			// 	} catch (e) {
-			// 	console.log("NewDocument catch block")
-			// 	}
-			// }
+			)
 		},
-		documentOnEdit: {
+		businessModelOnEdit: {
 			subscribe: (parent, args, { pubsub }) => {
 				try {
-					pubsub.asyncIterator(DOCUMENT_ON_EDIT).then(() =>{})
+					pubsub.asyncIterator(BUSINESS_MODEL_ON_EDIT).then(() =>{})
 				} catch (e) {
-				console.log("documentOnEdit catch block")
+				console.log("businessModelOnEdit catch block")
 				}
 			}
 		},
-		deletedDocument: {
+		deletedBusinessModel: {
 			subscribe: (parent, args, { pubsub }) => {
 				try {
-					pubsub.asyncIterator(DELETED_DOCUMENT).then(() =>{})
+					pubsub.asyncIterator(DELETED_BUSINESS_MODEL).then(() =>{})
 				} catch (e) {
-				console.log("deletedDocument catch block")
+				console.log("deletedBusinessModel catch block")
 				}
 			}
 		}
