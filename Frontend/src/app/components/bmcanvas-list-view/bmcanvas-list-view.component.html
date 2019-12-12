@@ -1,30 +1,32 @@
 <div>
     <div class="grid-container-create">
         <div style="flex: 2; margin-right: 10%;">
-            <h2>Documents List</h2>
-            <mat-list role="list" *ngFor="let document of documents">
+            <h2>Business Model Canvas List</h2>
+            <mat-list role="list" *ngFor="let businessModel of businessModels">
                 <mat-list-item role="listitem" style="grid-auto-columns: auto auto;">
                     <div style="grid-column: 1; flex: 1;">
-                        <span style="margin-right: 2%;">Title:</span>
-                        <span>{{document.title}}</span>
+                        <span style="margin-right: 2%;">Designed for:</span>
+                        <span>{{businessModel.name}}</span>
                     </div>
 
                     <div style="width: fit-content; grid-column: 2;">
-                        <button mat-button color="primary" routerLink="/bmcanvas-view">Edit</button>
-                        <button mat-button color="primary" (click)="deleteDocument(document.id)">Delete</button>
+                        <a routerLink="/bmcanvas-view" [state]="{data: businessModel}">
+                            <button mat-button color="primary">Edit</button>
+                        </a>
+                        <button mat-button color="primary" (click)="deleteBusinessModel(businessModel.id)">Delete</button>
                     </div>
                 </mat-list-item>
             </mat-list>
         </div>
 
         <div style="flex: 2; align-self: center;">
-            <h3>Create new Document</h3>
+            <h3>Create new Business Model Canvas</h3>
             <div id="form">
                 <form class="example-form">
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Enter Title" model="this.title">
+                        <input matInput placeholder="Design for" type="text" [value]="this.name" (input)="this.name = $event.target.value">
                     </mat-form-field>
-                    <button mat-stroked-button color="primary" (click)="createNewDocument()">Create</button>
+                    <button mat-stroked-button color="primary" (click)="createNewBusinessModel()">Create</button>
                 </form>
             </div>
 
@@ -50,13 +52,13 @@
     <mat-card>Simple card</mat-card>
     <h1>Docs</h1>
     <h2>Documents passed bei Graphql</h2>
-    <input [value]="title">
+    <input [value]="name">
     <textarea matInput cols="30" rows="10" id="myTextarea" placeholder="oijm" [value]="text"></textarea>
     <button mat-button color="primary" (click)="this.createNewDocument()">create</button>
 
     <div id="documentContainer" *ngFor="let doc of documents">
         <span id="documentItem" style="flex: 1">{{doc.id}}. </span>
-        <span id="documentItem" style="flex: 1">Title: {{doc.title}}</span>
+        <span id="documentItem" style="flex: 1">name: {{doc.name}}</span>
         <span style="flex: 2;"> Content: {{doc.content}}</span>
     </div>
 </div>

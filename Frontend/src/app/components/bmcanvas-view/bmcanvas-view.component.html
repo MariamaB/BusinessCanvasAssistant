@@ -1,19 +1,18 @@
 <div style="height: 100%;">
     <div id="header">
         <h1>Business Model Canvas</h1>
-        <button mat-button color="primary" routerLink="/document-view">back</button>
+        <div style="margin: 2%;">
+            <button mat-button color="primary" (click)="passData()">back</button>
+        </div>
     </div>
 
     <div id="form">
-        <mat-card style="width: max-content; align-self: center;">
-            <div>
-                <form class="example-form">
-                    <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Enter Title" model="this.title">
-                    </mat-form-field>
-                    <button mat-stroked-button color="primary">change</button>
-                </form>
-            </div>
+        <mat-card style="align-self: center;">
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Design for" type="text" [value]="this.businessModelData.name" (input)="this.businessModelData.name = $event.target.value">
+                </mat-form-field>
+            </form>
         </mat-card>
     </div>
     <div style="display: flex; justify-content: center; height: 100%; margin-top: 5%;">
@@ -23,46 +22,46 @@
                 <div class="grid-container-top">
                     <div class="item1">
                         <mat-card-title>Key Partners</mat-card-title>
-                        <textarea style="height: 90%;">Example Text</textarea>
+                        <textarea style="height: 90%;" type="text" [value]="this.businessModelData.content.keyPartners" (input)="this.businessModelData.content.keyPartners = $event.target.value"></textarea>
                     </div>
 
                     <div class="item2">
                         <mat-card-title>Key Activities</mat-card-title>
-                        <textarea style="height: 70%;">Example Text</textarea>
+                        <textarea style="height: 70%;" type="text" [value]="this.businessModelData.content.keyActivities" (input)="this.businessModelData.content.keyActivities = $event.target.value"></textarea>
                     </div>
 
                     <div class="item3">
                         <mat-card-title>Value Propositions</mat-card-title>
-                        <textarea style="height: 90%;">Example Text</textarea>
+                        <textarea style="height: 90%;" type="text" [value]="this.businessModelData.content.valueProposition" (input)="this.businessModelData.content.valueProposition = $event.target.value">Example Text</textarea>
                     </div>
 
                     <div class="item4">
                         <mat-card-title>Customer Relationships</mat-card-title>
-                        <textarea style="height: 70%;">Example Text</textarea>
+                        <textarea style="height: 70%;" type="text" [value]="this.businessModelData.content.customerRelationships" (input)="this.businessModelData.content.customerRelationships = $event.target.value">Example Text</textarea>
                     </div>
 
                     <div class="item5">
                         <mat-card-title>Customer Segments</mat-card-title>
-                        <textarea style="height: 70%;">Example Text</textarea>
+                        <textarea style="height: 70%;" type="text" [value]="this.businessModelData.content.CustomerSegments" (input)="this.businessModelData.content.CustomerSegments = $event.target.value">Example Text</textarea>
                     </div>
                     <div class="item7">
                         <mat-card-title>Key Resources</mat-card-title>
-                        <textarea style="height: 70%;">Example Text</textarea>
+                        <textarea style="height: 70%;" type="text" [value]="this.businessModelData.content.keyResources" (input)="this.businessModelData.content.keyResources = $event.target.value">Example Text</textarea>
                     </div>
 
                     <div class="item8">
                         <mat-card-title>Channels</mat-card-title>
-                        <textarea style="height: 90%;">Example Text</textarea>
+                        <textarea style="height: 90%;" type="text" [value]="this.businessModelData.content.channels" (input)="this.businessModelData.content.channels = $event.target.value">Example Text</textarea>
                     </div>
                 </div>
                 <div class="grid-container-bottom">
                     <div>
                         <mat-card-title>Cost Structure</mat-card-title>
-                        <textarea style=" margin-left:2%; height: 65%; width: 95%;">Example Text</textarea>
+                        <textarea style=" margin-left:2%; height: 65%; width: 95%;" type="text" [value]="this.businessModelData.content.costStructure" (input)="this.businessModelData.content.costStructure = $event.target.value">Example Text</textarea>
                     </div>
                     <div style="border: 2px solid #26608f; border-radius: 5px;">
                         <mat-card-title>Revenue Streams</mat-card-title>
-                        <textarea style=" margin-left:2%; height: 65%; width: 95%;">Example Text</textarea>
+                        <textarea style=" margin-left:2%; height: 65%; width: 95%;" type="text" [value]="this.businessModelData.content.revenueStreams" (input)="this.businessModelData.content.revenueStreams = $event.target.value">Example Text</textarea>
                     </div>
                 </div>
             </mat-card-content>
