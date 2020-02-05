@@ -1,3 +1,4 @@
+const typeDefs = `
 type BMContent {
 	keyPartners: String, 
 	keyActivities: String, 
@@ -44,3 +45,6 @@ type Subscription {
 	newBusinessModel: BusinessModel
 	deletedBusinessModel: BusinessModel!
 }
+`;
+
+module.exports = typeDefs;
