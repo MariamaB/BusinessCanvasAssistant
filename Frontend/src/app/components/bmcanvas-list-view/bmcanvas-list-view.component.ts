@@ -4,21 +4,19 @@ import { Subscription } from "rxjs";
 import gql from "graphql-tag";
 
 const BUSINESS_MODEL_QUERY = gql`
-  query businessModels($searchString: String) {
-    businessModels(searchString: $searchString) {
+  query businessModels {
+    businessModels {
       id
       name
-      content {
-        keyPartners
-        keyActivities
-        valueProposition
-        customerRelationships
-        customerSegments
-        keyResources
-        channels
-        costStructure
-        revenueStreams
-      }
+      keyPartners
+      keyActivities
+      valueProposition
+      customerRelationships
+      customerSegments
+      keyResources
+      channels
+      costStructure
+      revenueStreams
     }
   }
 `;
@@ -28,56 +26,40 @@ const BUSINESS_MODEL_CREATE = gql`
     createBusinessModel(name: $name) {
       id
       name
-      content {
-        keyPartners
-        keyActivities
-        valueProposition
-        customerRelationships
-        customerSegments
-        keyResources
-        channels
-        costStructure
-        revenueStreams
-      }
+      keyPartners
+      keyActivities
+      valueProposition
+      customerRelationships
+      customerSegments
+      keyResources
+      channels
+      costStructure
+      revenueStreams
     }
   }
 `;
 
 const BUSINESS_MODEL_DELETE = gql`
-  mutation deleteBusinessModel($id: String!) {
+  mutation deleteBusinessModel($id: ID!) {
     deleteBusinessModel(id: $id) {
       id
-      name
-      content {
-        keyPartners
-        keyActivities
-        valueProposition
-        customerRelationships
-        customerSegments
-        keyResources
-        channels
-        costStructure
-        revenueStreams
-      }
     }
   }
 `;
 const BUSINESS_MODEL_EDIT = gql`
-  mutation editBusinessModel($id: String!, $name: String, $content: BMInput) {
-    editBusinessModel(id: $id, name: $name, content: $content) {
+  mutation editBusinessModel($businessModel: BMInput) {
+    editBusinessModel(businessModel: $businessModel) {
       id
       name
-      content {
-        keyPartners
-        keyActivities
-        valueProposition
-        customerRelationships
-        customerSegments
-        keyResources
-        channels
-        costStructure
-        revenueStreams
-      }
+      keyPartners
+      keyActivities
+      valueProposition
+      customerRelationships
+      customerSegments
+      keyResources
+      channels
+      costStructure
+      revenueStreams
     }
   }
 `;
@@ -87,17 +69,15 @@ const BUSINESS_MODEL_ON_EDIT = gql`
     businessModelOnEdit {
       id
       name
-      content {
-        keyPartners
-        keyActivities
-        valueProposition
-        customerRelationships
-        customerSegments
-        keyResources
-        channels
-        costStructure
-        revenueStreams
-      }
+      keyPartners
+      keyActivities
+      valueProposition
+      customerRelationships
+      customerSegments
+      keyResources
+      channels
+      costStructure
+      revenueStreams
     }
   }
 `;
@@ -107,17 +87,15 @@ const ON_NEW_BUSINESS_MODEL = gql`
     newBusinessModel {
       id
       name
-      content {
-        keyPartners
-        keyActivities
-        valueProposition
-        customerRelationships
-        customerSegments
-        keyResources
-        channels
-        costStructure
-        revenueStreams
-      }
+      keyPartners
+      keyActivities
+      valueProposition
+      customerRelationships
+      customerSegments
+      keyResources
+      channels
+      costStructure
+      revenueStreams
     }
   }
 `;
@@ -140,12 +118,12 @@ export class BmcanvasListViewComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.onNewBusinessModel();
+    // this.onNewBusinessModel();
 
     console.log("onINit " + history.state.updatedData);
     if (history.state.updatedData != undefined) {
       console.log("passed data " + history.state.updatedData.name);
-      let updatedBusinessmodel = history.state.updatedData;
+      // let updatedBusinessmodel = history.state.updatedData;
       // this.businessModels.map(bm =>
       //   bm.i === updatedBusinessmodel.id ? updatedBusinessmodel : bm
       // );
@@ -199,14 +177,12 @@ export class BmcanvasListViewComponent implements OnInit {
       );
   }
 
-  public editBusinessModel(id, name?, content?) {
+  public editBusinessModel(businessModel?) {
     this.apollo
       .mutate({
         mutation: BUSINESS_MODEL_EDIT,
         variables: {
-          id,
-          name,
-          content
+          businessModel
         }
       })
       .subscribe(
@@ -252,21 +228,18 @@ export class BmcanvasListViewComponent implements OnInit {
   }
 
   private updateBusinessModel(businessModel) {
-    this.editBusinessModel(
-      businessModel.id,
-      businessModel.name,
-
-      {
-        keyPartners: businessModel.content.keyPartners,
-        keyActivities: businessModel.content.keyActivities,
-        valueProposition: businessModel.content.valueProposition,
-        customerRelationships: businessModel.content.customerRelationships,
-        customerSegments: businessModel.content.CustomerSegments,
-        keyResources: businessModel.content.keyResources,
-        channels: businessModel.content.channels,
-        costStructure: businessModel.content.costStructure,
-        revenueStreams: businessModel.content.revenueStreams
-      }
-    );
+    this.editBusinessModel({
+      id: businessModel.id,
+      name: businessModel.name,
+      keyPartners: businessModel.content.keyPartners,
+      keyActivities: businessModel.content.keyActivities,
+      valueProposition: businessModel.content.valueProposition,
+      customerRelationships: businessModel.content.customerRelationships,
+      customerSegments: businessModel.content.CustomerSegments,
+      keyResources: businessModel.content.keyResources,
+      channels: businessModel.content.channels,
+      costStructure: businessModel.content.costStructure,
+      revenueStreams: businessModel.content.revenueStreams
+    });
   }
 }

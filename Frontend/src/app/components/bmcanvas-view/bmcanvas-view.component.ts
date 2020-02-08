@@ -11,17 +11,15 @@ export class BmcanvasViewComponent implements OnInit {
   public businessModelData = {
     id: "",
     name: "",
-    content: {
-      keyPartners: "",
-      keyActivities: "",
-      valueProposition: "",
-      customerRelationships: "",
-      CustomerSegments: "",
-      keyResources: "",
-      channels: "",
-      costStructure: "",
-      revenueStreams: ""
-    }
+    keyPartners: "",
+    keyActivities: "",
+    valueProposition: "",
+    customerRelationships: "",
+    CustomerSegments: "",
+    keyResources: "",
+    channels: "",
+    costStructure: "",
+    revenueStreams: ""
   };
 
   constructor(private router: Router) {}
