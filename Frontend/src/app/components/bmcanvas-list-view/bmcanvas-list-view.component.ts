@@ -231,15 +231,15 @@ export class BmcanvasListViewComponent implements OnInit {
     this.editBusinessModel({
       id: businessModel.id,
       name: businessModel.name,
-      keyPartners: businessModel.content.keyPartners,
-      keyActivities: businessModel.content.keyActivities,
-      valueProposition: businessModel.content.valueProposition,
-      customerRelationships: businessModel.content.customerRelationships,
-      customerSegments: businessModel.content.CustomerSegments,
-      keyResources: businessModel.content.keyResources,
-      channels: businessModel.content.channels,
-      costStructure: businessModel.content.costStructure,
-      revenueStreams: businessModel.content.revenueStreams
+      keyPartners: businessModel.keyPartners,
+      keyActivities: businessModel.keyActivities,
+      valueProposition: businessModel.valueProposition,
+      customerRelationships: businessModel.customerRelationships,
+      customerSegments: businessModel.customerSegments,
+      keyResources: businessModel.keyResources,
+      channels: businessModel.channels,
+      costStructure: businessModel.costStructure,
+      revenueStreams: businessModel.revenueStreams
     });
   }
 }

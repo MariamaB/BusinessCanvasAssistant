@@ -10,7 +10,7 @@ const BUSINESS_MODEL_ON_EDIT = gql`
         keyActivities
         valueProposition
         customerRelationships
-        CustomerSegments
+        customerSegments
         keyResources
         channels
         costStructure
@@ -30,7 +30,7 @@ const ON_NEW_BUSINESS_MODEL = gql`
         keyActivities
         valueProposition
         customerRelationships
-        CustomerSegments
+        customerSegments
         keyResources
         channels
         costStructure

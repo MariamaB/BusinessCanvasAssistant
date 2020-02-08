@@ -10,7 +10,7 @@ const BUSINESS_MODEL_QUERY = gql`
         keyActivities
         valueProposition
         customerRelationships
-        CustomerSegments
+        customerSegments
         keyResources
         channels
         costStructure

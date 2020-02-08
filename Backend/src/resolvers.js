@@ -66,7 +66,7 @@ const resolvers = {
             const session = driver.session();
             let businessModel;
             try {
-                const newBusinessModel = await session.run(`CREATE (newBm:BusinessModel { id: $id, name: $name, keyPartners: "", keyActivities: "", valueProposition: "", customerRelationships: "", CustomerSegments: "", keyResources: "", channels: "", costStructure: "", revenueStreams: ""}) RETURN newBm`, { id: uuidv1(), name });
+                const newBusinessModel = await session.run(`CREATE (newBm:BusinessModel { id: $id, name: $name, keyPartners: "", keyActivities: "", valueProposition: "", customerRelationships: "", customerSegments: "", keyResources: "", channels: "", costStructure: "", revenueStreams: ""}) RETURN newBm`, { id: uuidv1(), name });
                 [businessModel] = await newBusinessModel.records.map(record => {
                     return record.get("newBm").properties;
                 });
@@ -88,7 +88,7 @@ const resolvers = {
                 const updatedBM = await session.run(
                     `
                     MATCH (bm:BusinessModel{id: $businessModel.id})
-                    SET bm = businessModel
+                    SET bm = $businessModel
                     RETURN bm
                 `, { businessModel }
                 );

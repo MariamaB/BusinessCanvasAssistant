@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import documents from "../../../../../Backend/src/database";
 import { Router } from "@angular/router";
 
 @Component({
@@ -15,7 +14,7 @@ export class BmcanvasViewComponent implements OnInit {
     keyActivities: "",
     valueProposition: "",
     customerRelationships: "",
-    CustomerSegments: "",
+    customerSegments: "",
     keyResources: "",
     channels: "",
     costStructure: "",
