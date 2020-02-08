@@ -1,43 +1,54 @@
 const typeDefs = `
-type BMContent {
-	keyPartners: String, 
-	keyActivities: String, 
-	valueProposition: String, 
-	customerRelationships: String, 
-	customerSegments: String, 
-	keyResources: String, 
-	channels: String, 
-	costStructure: String, 
-	revenueStreams: String
-}
 
 input BMInput {
-	keyPartners: String, 
-	keyActivities: String, 
-	valueProposition: String, 
-	customerRelationships: String, 
-	customerSegments: String, 
-	keyResources: String, 
-	channels: String, 
-	costStructure: String, 
+	id: String!
+	name: String!
+	keyPartners: String
+	keyActivities: String
+	valueProposition: String
+	customerRelationships: String
+	customerSegments: String
+	keyResources: String
+	channels: String
+	costStructure: String
 	revenueStreams: String
 }
 
 type BusinessModel {
-	id: String!
+	id: ID!
 	name: String!
-	content: BMContent
+	keyPartners: String
+	keyActivities: String
+	valueProposition: String
+	customerRelationships: String
+	customerSegments: String
+	keyResources: String
+	channels: String
+	costStructure: String
+	revenueStreams: String
 }
 
 type Query {
-	businessModel: [BusinessModel]
-	businessModels(searchString: String): [BusinessModel]
+	businessModels: [BusinessModel]
+	businessModelsWith(searchString: String!): [BusinessModel]
+	businessModel(id: ID!): BusinessModel
 }
 
 type Mutation {
 	createBusinessModel(name: String!): BusinessModel!
-	editBusinessModel(id: String!, name: String, content: BMInput): BusinessModel!
-	deleteBusinessModel(id: String!): BusinessModel!
+
+	editBusinessModel(id: ID!, name: String, 
+		keyPartners: String, 
+		keyActivities: String, 
+		valueProposition: String, 
+		customerRelationships: String, 
+		customerSegments: String, 
+		keyResources: String, 
+		channels: String, 
+		costStructure: String, 
+		revenueStreams: String): BusinessModel!
+		
+	deleteBusinessModel(id: ID!): BusinessModel!
 }
 
 type Subscription {

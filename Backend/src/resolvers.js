@@ -1,5 +1,5 @@
 // const businessModels = require('./database');
-const { neo4jgraphql, AuthenticationError } = require('neo4j-graphql-js');
+const { neo4jgraphql } = require('neo4j-graphql-js');
 // const businessModels = neo4jgraphql;
 const { PubSub, withFilter } = require('graphql-subscriptions');
 // import { neo4jgraphql } from 'neo4j-graphql';
@@ -15,17 +15,52 @@ const BUSINESS_MODEL_ON_EDIT = 'BUSINESS_MODEL_ON_EDIT';
 
 const resolvers = {
     Query: {
-        businessModels: (object, params, ctx, info) => {
-                console.log(JSON.stringify(neo4jgraphql(object, params, ctx, info), null, 2))
-                return neo4jgraphql(object, params, ctx, info)
+        businessModels: (parent, args, context, info) => {
+            return neo4jgraphql(parent, args, context, info);
+        },
+        businessModelsWith: async(parent, { searchString }, context, info) => {
+            const session = context.driver.session();
+            let businessModelList = [];
+            try {
+                const businessModels = await session.run(`Match (bm:BusinessModel) Return bm`);
+
+                businessModelList = await businessModels.records.map(record => {
+                    return record.get("bm").properties;
+                });
+
+            } catch (e) {
+                console.error(e);
+            } finally {
+                await session.close();
             }
-            // businessModels: (parent, { searchString }) => {
-            //     return !searchString ?
-            //         businessModels :
-            //         businessModels.filter(
-            //             (businessModel) => businessModel.name.includes(searchString)
-            //         );
-            // }
+
+            console.log('bm', JSON.stringify(businessModelList, null, 2))
+            businessModelList = businessModelList.filter(
+                (bM) => bM.name.includes(searchString) || bM.keyPartners.includes(searchString) || bM.keyActivities.includes(searchString) ||
+                bM.valueProposition.includes(searchString) || bM.customerRelationships.includes(searchString) ||
+                bM.customerSegments.includes(searchString) || bM.keyResources.includes(searchString) || bM.channels.includes(searchString) ||
+                bM.costStructure.includes(searchString) || bM.revenueStreams.includes(searchString));
+
+            return businessModelList.size() > 0 ? businessModelList : error('No such Business Model Canvas!');
+
+        },
+        businessModel: async(parent, { id }, context, info) => {
+            const session = context.driver.session();
+            let businessModel;
+            try {
+                const businessModels = await session.run(`Match (bm:BusinessModel {id: $id}) Return bm`, { id });
+
+                [businessModel] = await businessModels.records.map(record => {
+                    return record.get("bm").properties;
+                });
+
+            } catch (e) {
+                console.error(e);
+            } finally {
+                await session.close();
+            }
+            return businessModel;
+        }
     },
     Mutation: {
         createBusinessModel: (parent, { name }, { pubsub }) => {
