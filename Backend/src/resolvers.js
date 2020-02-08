@@ -49,7 +49,6 @@ const resolvers = {
             let businessModel;
             try {
                 const businessModels = await session.run(`Match (bm:BusinessModel {id: $id}) Return bm`, { id });
-
                 [businessModel] = await businessModels.records.map(record => {
                     return record.get("bm").properties;
                 });
@@ -63,63 +62,76 @@ const resolvers = {
         }
     },
     Mutation: {
-        createBusinessModel: (parent, { name }, { pubsub }) => {
-            const businessModel = {
-                id: uuidv1(),
-                name: name,
-                content: {
-                    keyPartners: '',
-                    keyActivities: '',
-                    valueProposition: '',
-                    customerRelationships: '',
-                    CustomerSegments: '',
-                    keyResources: '',
-                    channels: '',
-                    costStructure: '',
-                    revenueStreams: ''
-                },
-            };
-            businessModels.push(businessModel);
-            console.log("try to create!")
-
-            pubsub.publish(NEW_BUSINESS_MODEL, {
-                newBusinessModel: businessModel
-            });
-
-            return businessModel;
-        },
-        editBusinessModel: (parent, { id, name, content }, { pubsub }) => {
-            console.log("update: " + name);
+        createBusinessModel: async(parent, { name }, { driver, pubsub }, info) => {
+            const session = driver.session();
             let businessModel;
-            businessModels.forEach((bm) => {
-                if (bm.id === id) {
-                    bm.name = name ? name : bm.name,
-                        bm.content = content ? content : bm.content,
-                        businessModel = bm;
-                }
-            });
-
-            pubsub.publish(BUSINESS_MODEL_ON_EDIT, {
-                businessModelOnEdit: businessModel
-            });
-
+            try {
+                const newBusinessModel = await session.run(`CREATE (newBm:BusinessModel { id: $id, name: $name, keyPartners: "", keyActivities: "", valueProposition: "", customerRelationships: "", CustomerSegments: "", keyResources: "", channels: "", costStructure: "", revenueStreams: ""}) RETURN newBm`, { id: uuidv1(), name });
+                [businessModel] = await newBusinessModel.records.map(record => {
+                    return record.get("newBm").properties;
+                });
+                pubsub.publish(NEW_BUSINESS_MODEL, {
+                    newBusinessModel: businessModel
+                });
+            } catch (e) {
+                console.error(e);
+            } finally {
+                await session.close();
+            }
             return businessModel;
         },
-        deleteBusinessModel: (parent, { id }, { pubsub }) => {
-            console.log("deleting: " + id)
-            let businessModel = businessModels.find(bm => bm.id = id);
-            console.log("deleting: " + businessModel.name)
-            businessModels.splice(businessModels.indexOf(businessModel), 1);
 
-            pubsub.publish(DELETED_BUSINESS_MODEL, {
-                deletedBusinessModel: businessModel
-            });
+        editBusinessModel: async(parent, { businessModel }, { driver, pubsub }) => {
+            const session = driver.session();
+            let updatedBusinessModel;
+            try {
+                const updatedBM = await session.run(
+                    `
+                    MATCH (bm:BusinessModel{id: $businessModel.id})
+                    SET bm = businessModel
+                    RETURN bm
+                `, { businessModel }
+                );
+                [updatedBusinessModel] = await updatedBM.records.map(record => {
+                    return record.get("bm").properties;
+                });
 
+                pubsub.publish(BUSINESS_MODEL_ON_EDIT, {
+                    businessModelOnEdit: businessModel
+                });
+            } catch (e) {
+                console.error(e);
+            } finally {
+                await session.close();
+            }
+            return updatedBusinessModel;
+        },
+        deleteBusinessModel: async(parent, { id }, { pubsub, driver }, info) => {
+            let businessModel;
+            const session = driver.session();
+            try {
+                const checkBM = await session.run(`MATCH (bm:BusinessModel {id: $id}) RETURN bm`, { id });
+                [businessModel] = await checkBM.records.map(record => {
+                    return record.get("bm").properties;
+                });
+                if (businessModel) {
+                    await session.run(`MATCH (deletedBM:BusinessModel {id: $id}) DELETE deletedBM`, { id });
+                    pubsub.publish(DELETED_BUSINESS_MODEL, {
+                        deletedBusinessModel: businessModel
+                    });
+                } else {
+                    businessModel = undefined;
+                }
+            } catch (e) {
+                console.error(e);
+            } finally {
+                await session.close();
+            }
             return businessModel;
         }
     },
-    Subscription: {
 
+    Subscription: {
         newBusinessModel: {
             subscribe: withFilter(
                 (_, args, { pubsub }) => {

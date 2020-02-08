@@ -36,19 +36,8 @@ type Query {
 
 type Mutation {
 	createBusinessModel(name: String!): BusinessModel!
-
-	editBusinessModel(id: ID!, name: String, 
-		keyPartners: String, 
-		keyActivities: String, 
-		valueProposition: String, 
-		customerRelationships: String, 
-		customerSegments: String, 
-		keyResources: String, 
-		channels: String, 
-		costStructure: String, 
-		revenueStreams: String): BusinessModel!
-		
-	deleteBusinessModel(id: ID!): BusinessModel!
+	editBusinessModel(businessModel: BMInput): BusinessModel!
+	deleteBusinessModel(id: ID!): BusinessModel
 }
 
 type Subscription {
@@ -59,3 +48,14 @@ type Subscription {
 `;
 
 module.exports = typeDefs;
+
+// editBusinessModel(id: ID!, name: String, 
+// 	keyPartners: String, 
+// 	keyActivities: String, 
+// 	valueProposition: String, 
+// 	customerRelationships: String, 
+// 	customerSegments: String, 
+// 	keyResources: String, 
+// 	channels: String, 
+// 	costStructure: String, 
+// 	revenueStreams: String): BusinessModel!

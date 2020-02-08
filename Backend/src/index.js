@@ -7,8 +7,8 @@ const typeDefs = require('./schema');
 const { makeAugmentedSchema } = require('neo4j-graphql-js');
 const resolvers = require('./resolvers')
 
-// const { PubSub } = require('graphql-subscriptions');
-// const pubsub = new PubSub();
+const { PubSub } = require('graphql-subscriptions');
+const pubsub = new PubSub();
 
 let driver = neo4j.driver(
     NEO4J_URI,
@@ -24,7 +24,8 @@ const server = new ApolloServer({
         return {
             // user: decode(token),
             user: token,
-            driver
+            driver,
+            pubsub
         };
     },
     introspection: true,
