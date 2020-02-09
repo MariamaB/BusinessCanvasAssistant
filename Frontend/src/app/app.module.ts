@@ -15,6 +15,9 @@ import { MatListModule } from "@angular/material/list";
 import { MatInputModule } from "@angular/material/input";
 import { BmcanvasViewComponent } from "./components/bmcanvas-view/bmcanvas-view.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatIconModule } from "@angular/material/icon";
+import { ErrorComponent } from "./components/error/error.component";
 
 const appRoutes: Routes = [
   {
@@ -37,6 +40,7 @@ const appRoutes: Routes = [
     BmcanvasListViewComponent,
     BmcanvasViewComponent,
     PageNotFoundComponent
+    // ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +56,11 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule
   ],
+  // entryComponents: [ErrorComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

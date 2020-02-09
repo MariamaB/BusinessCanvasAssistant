@@ -17,7 +17,6 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    /* justify-content:; */
     padding: 2% 2% 25% 2%;
 }
 
@@ -25,9 +24,16 @@ mat-card-title {
     font-size: 15px;
 }
 
+textarea {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    border-left: #d2d4d6;
+    border-right: #d2d4d6;
+    border-bottom: #d2d4d6;
+}
+
 .grid-container {
     display: grid;
-    grid-template-rows: 110% 60%;
+    grid-auto-rows: 110% 50%;
     grid-auto-columns: 100%;
     grid-gap: 2%;
     /* background-color: #2196f3; */
@@ -48,12 +54,29 @@ mat-card-title {
     /* padding: 0% 0% 20% 0%; */
 }
 
-.grid-container-top>div {
+.grid-container-bottom>mat-card {
     border: 2px solid #26608f;
     border-radius: 5px;
     text-align: center;
     padding: 20px 0;
     font-size: 10px;
+}
+
+.grid-container-top>mat-card {
+    border: 2px solid #26608f;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 10px;
+}
+
+mat-card-title {
+    font-style: oblique;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    /* background-color: aqua; */
+    /* border-bottom-style: ridge; */
+    border-bottom-color: #d2d4d6;
 }
 
 .grid-container-bottom>div {

@@ -1,7 +1,10 @@
+<mat-toolbar color="primary" [class.mat-elevation-z8]="true">
+    <span>Business Model Canvas List</span>
+</mat-toolbar>
+
 <div>
     <div class="grid-container-create">
         <div style="flex: 2; margin-right: 10%;">
-            <h2>Business Model Canvas List</h2>
             <mat-list role="list" *ngFor="let businessModel of businessModels">
                 <mat-list-item role="listitem" style="grid-auto-columns: auto auto;">
                     <div style="grid-column: 1; flex: 1;">
