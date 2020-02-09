@@ -22,7 +22,6 @@ export class BmcanvasViewComponent implements OnInit {
     costStructure: "",
     revenueStreams: ""
   };
-  isActive = false;
 
   constructor(private router: Router) {}
   // constructor(private router: Router, private dialog: MatDialog) {}

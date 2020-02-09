@@ -20,7 +20,7 @@ const schema = makeAugmentedSchema({ typeDefs, resolvers })
 const server = new ApolloServer({
     schema,
     context: ({ req }) => {
-        const token = req.headers.authorization;
+        const token = req ? req.headers.authorization : "Subscription";
         return {
             // user: decode(token),
             user: token,

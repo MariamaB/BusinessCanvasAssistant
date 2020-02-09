@@ -118,7 +118,7 @@ export class BmcanvasListViewComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    // this.onNewBusinessModel();
+    this.onNewBusinessModel();
 
     console.log("onINit " + history.state.updatedData);
     if (history.state.updatedData != undefined) {
@@ -205,15 +205,10 @@ export class BmcanvasListViewComponent implements OnInit {
         variables: {}
       })
       .subscribe(({ data }) => {
-        // this.document = {
-        //   /* eslint-disable */
-        //   id: data.newDocument.id,
-        //   name: data.newDocument.name,
-        //   /* eslint-disable */
-        //   content: data.newDocument.content
-        // };
-        // return data.newDocument;
-        // this.documents.push(data.document);
+        const { newBusinessModel } = data;
+        // if (!this.businessModels.some(bm => bm.id === newBusinessModel.id)) {
+        this.businessModels.push(newBusinessModel);
+        // }
       });
   }
 
