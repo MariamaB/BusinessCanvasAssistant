@@ -11,13 +11,19 @@
 
 #content-container {
     padding: 5% 8% 5% 8%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .bmc-card {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    padding: 2% 2% 25% 2%;
+    /* align-items: center; */
+    /* padding: 2% 2% 25% 2%; */
+    /* width: 100%; */
+    /* height: 100%; */
+    background-color: blueviolet;
 }
 
 mat-card-title {
@@ -33,17 +39,23 @@ textarea {
 
 .grid-container {
     display: grid;
-    grid-auto-rows: 110% 50%;
+    grid-auto-rows: 60% 40%;
     grid-auto-columns: 100%;
-    grid-gap: 2%;
-    /* background-color: #2196f3; */
+    grid-gap: 10%;
+    /* height: 100%; */
+    /* align-self: center; */
+    padding: 10%;
+    /* height: fit-content; */
+    background-color: #2196f3;
 }
 
 .grid-container-top {
     display: grid;
     grid-template-columns: 19.5% 20% 19.5% 20% 19.3%;
     grid-gap: 5px;
-    /* background-color: #2196f3; */
+    height: fit-content;
+    background-color: black;
+    /* padding: 2%; */
     /* padding: 10% 10% 0 10%; */
 }
 
@@ -52,13 +64,14 @@ textarea {
     grid-template-columns: 50% 50%;
     grid-gap: 5px;
     /* padding: 0% 0% 20% 0%; */
+    background-color: grey;
 }
 
 .grid-container-bottom>mat-card {
     border: 2px solid #26608f;
     border-radius: 5px;
     text-align: center;
-    padding: 20px 0;
+    /* padding: 20px 0; */
     font-size: 10px;
 }
 
@@ -66,7 +79,7 @@ textarea {
     border: 2px solid #26608f;
     border-radius: 5px;
     text-align: center;
-    padding: 20px 0;
+    /* padding: 20px 0; */
     font-size: 10px;
 }
 
