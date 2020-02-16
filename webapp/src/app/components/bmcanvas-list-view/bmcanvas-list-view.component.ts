@@ -121,7 +121,7 @@ export class BmcanvasListViewComponent implements OnInit {
     this.onNewBusinessModel();
 
     console.log("onINit " + history.state.updatedData);
-    if (history.state.updatedData != undefined) {
+    if (history.state.updatedData !== undefined) {
       console.log("passed data " + history.state.updatedData.name);
       // let updatedBusinessmodel = history.state.updatedData;
       // this.businessModels.map(bm =>
@@ -131,6 +131,7 @@ export class BmcanvasListViewComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   ngOnDestroy() {
     this.query.unsubscribe();
   }
@@ -145,7 +146,8 @@ export class BmcanvasListViewComponent implements OnInit {
       })
       .subscribe(
         ({ data }) => {
-          this.businessModels.push(data.createBusinessModel);
+          const { createBusinessModel } = data;
+          this.businessModels.push(createBusinessModel);
         },
         error => {
           console.log(error);
@@ -164,10 +166,9 @@ export class BmcanvasListViewComponent implements OnInit {
       })
       .subscribe(
         ({ data }) => {
-          this.businessModels = data.deleteBusinessModel
-            ? this.businessModels.filter(
-                d => d.id != data.deleteBusinessModel.id
-              )
+          const { deleteBusinessModel } = data;
+          this.businessModels = deleteBusinessModel
+            ? this.businessModels.filter(d => d.id !== deleteBusinessModel.id)
             : this.businessModels;
         },
         error => {
@@ -185,10 +186,12 @@ export class BmcanvasListViewComponent implements OnInit {
           businessModel
         }
       })
+
       .subscribe(
         ({ data }) => {
+          const { editBusinessModel } = data;
           this.businessModels.map(bm =>
-            bm.id === data.editBusinessModel.id ? data.editBusinessModel : bm
+            bm.id === editBusinessModel.id ? editBusinessModel : bm
           );
         },
         error => {
@@ -218,7 +221,8 @@ export class BmcanvasListViewComponent implements OnInit {
         query: BUSINESS_MODEL_QUERY
       })
       .valueChanges.subscribe(({ data }) => {
-        this.businessModels = data.businessModels;
+        const { businessModels } = data;
+        this.businessModels = businessModels;
       });
   }
 
