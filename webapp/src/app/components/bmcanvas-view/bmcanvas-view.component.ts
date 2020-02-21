@@ -23,8 +23,8 @@ export class BmcanvasViewComponent implements OnInit {
     revenueStreams: ""
   };
 
-  constructor(private router: Router) {}
-  // constructor(private router: Router, private dialog: MatDialog) {}
+  // constructor(private router: Router) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   ngOnInit() {
     if (JSON.parse(localStorage.getItem("businessModelData")) === null) {
@@ -45,11 +45,11 @@ export class BmcanvasViewComponent implements OnInit {
   }
 
   passData() {
-    // this.dialog.open(ErrorComponent, {
-    //   data: {
-    //     message: "Your login information are incorrect!"
-    //   }
-    // });
+    this.dialog.open(ErrorComponent, {
+      data: {
+        message: "Your login information are incorrect!"
+      }
+    });
     this.router.navigate(["/"], {
       state: { updatedData: this.businessModelData }
     });

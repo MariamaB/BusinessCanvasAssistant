@@ -123,15 +123,10 @@ export class BmcanvasListViewComponent implements OnInit {
     console.log("onINit " + history.state.updatedData);
     if (history.state.updatedData !== undefined) {
       console.log("passed data " + history.state.updatedData.name);
-      // let updatedBusinessmodel = history.state.updatedData;
-      // this.businessModels.map(bm =>
-      //   bm.i === updatedBusinessmodel.id ? updatedBusinessmodel : bm
-      // );
       this.updateBusinessModel(history.state.updatedData);
     }
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
   ngOnDestroy() {
     this.query.unsubscribe();
   }

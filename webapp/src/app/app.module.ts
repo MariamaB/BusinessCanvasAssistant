@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { ErrorComponent } from "./components/error/error.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 const appRoutes: Routes = [
   {
@@ -39,15 +40,16 @@ const appRoutes: Routes = [
     AppComponent,
     BmcanvasListViewComponent,
     BmcanvasViewComponent,
-    PageNotFoundComponent
-    // ErrorComponent
+    PageNotFoundComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(
-      appRoutes
-      // { enableTracing: true } // <-- debugging purposes only
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
     ),
+    MatDialogModule,
     GraphQLModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -60,7 +62,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatIconModule
   ],
-  // entryComponents: [ErrorComponent],
+  entryComponents: [ErrorComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

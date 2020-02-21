@@ -1,6 +1,6 @@
 import { Component, Inject, Injectable } from "@angular/core";
 
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
 @Component({
   templateUrl: "error.component.html"
