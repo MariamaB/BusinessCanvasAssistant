@@ -1,5 +1,23 @@
-<h2 mat-dialog-title>Error</h2>
-<mat-dialog-content class="error">{{data.message}}</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-raised-button (click)="closeDialog()">Ok</button>
-</mat-dialog-actions>
+<h2 mat-dialog-title>Overlay</h2>
+<mat-dialog-content style="padding: 2%;">
+    <mat-card style="padding: 10%;">
+        <mat-card-header>
+            <mat-card-title>Title</mat-card-title>
+            <mat-card-subtitle>Subtitle</mat-card-subtitle>
+        </mat-card-header>
+        <img matCardImage src="assets/favicon.png">
+        <mat-card-content>
+            {{data.message}}
+        </mat-card-content>
+        <mat-card-actions align="start">
+            <!-- <button mat-button (click)="closeDialog()">Action1</button> -->
+            <mat-dialog-actions>
+                <button mat-raised-button (click)="closeDialog()">Ok</button>
+            </mat-dialog-actions>
+        </mat-card-actions>
+        <mat-card-footer>
+            Footer
+        </mat-card-footer>
+    </mat-card>
+
+</mat-dialog-content>
