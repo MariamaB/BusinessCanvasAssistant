@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Apollo, QueryRef } from "apollo-angular";
 import { Subscription } from "rxjs";
 import gql from "graphql-tag";
+import { OverlayComponent } from "../overlay/overlay.component";
+import { MatDialog } from "@angular/material";
 
 const BUSINESS_MODEL_QUERY = gql`
   query businessModels {
@@ -114,7 +116,7 @@ export class BmcanvasListViewComponent implements OnInit {
 
   private query: Subscription;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.getData();
@@ -234,6 +236,15 @@ export class BmcanvasListViewComponent implements OnInit {
       channels: businessModel.channels,
       costStructure: businessModel.costStructure,
       revenueStreams: businessModel.revenueStreams
+    });
+  }
+
+  passData() {
+    this.dialog.open(OverlayComponent, {
+      width: "70%",
+      data: {
+        message: "Forward data from previous component!"
+      }
     });
   }
 }
