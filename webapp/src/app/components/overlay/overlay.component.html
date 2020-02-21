@@ -1,22 +1,20 @@
 <h2 mat-dialog-title>Overlay</h2>
-<mat-dialog-content style="padding: 2%;">
+<mat-dialog-content>
     <mat-card>
         <mat-card-header>
             <mat-card-title>Title</mat-card-title>
             <mat-card-subtitle>Subtitle</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content style="padding: 10%;">
+        <mat-card-content class="main-container">
             <img matCardImage src="assets/favicon.png"> {{data.message}}
         </mat-card-content>
-        <mat-card-actions align="start">
-            <!-- <button mat-button (click)="closeDialog()">Action1</button> -->
+        <mat-card-actions align="center">
             <mat-dialog-actions>
                 <button mat-raised-button (click)="closeDialog()">Ok</button>
             </mat-dialog-actions>
         </mat-card-actions>
         <mat-card-footer align="center">
-            Footer
+            <!-- Footer -->
         </mat-card-footer>
     </mat-card>
-
 </mat-dialog-content>
