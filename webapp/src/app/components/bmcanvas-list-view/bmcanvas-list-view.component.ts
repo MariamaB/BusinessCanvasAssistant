@@ -239,10 +239,12 @@ export class BmcanvasListViewComponent implements OnInit {
     });
   }
 
-  passData() {
+  passDataToOverlay(businessModelTitel: String) {
     this.dialog.open(OverlayComponent, {
       width: "70%",
+      disableClose: true,
       data: {
+        name: businessModelTitel ? businessModelTitel : "Title",
         message: "Forward data from previous component!"
       }
     });

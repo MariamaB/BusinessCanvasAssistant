@@ -14,7 +14,7 @@
 
                     <div style="width: fit-content; grid-column: 2;">
                         <a routerLink="/bmcanvas-view" [state]="{data: businessModel}">
-                            <button mat-button color="primary" (click)="passData()">Edit</button>
+                            <button mat-button color="primary" (click)="passDataToOverlay(businessModel.name)">Edit</button>
                         </a>
                         <button mat-button color="primary" (click)="deleteBusinessModel(businessModel.id)">Delete</button>
                     </div>
