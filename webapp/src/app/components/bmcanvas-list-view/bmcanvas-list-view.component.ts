@@ -241,7 +241,7 @@ export class BmcanvasListViewComponent implements OnInit {
 
   passDataToOverlay(businessModelTitel: String) {
     const dialogRef = this.dialog.open(OverlayComponent, {
-      width: "70%",
+      width: "90%",
       disableClose: true,
       data: {
         name: businessModelTitel ? businessModelTitel : "Title",
