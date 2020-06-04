@@ -186,7 +186,6 @@ export class BmcanvasListViewComponent implements OnInit {
           businessModel
         }
       })
-
       .subscribe(
         ({ data }) => {
           const { editBusinessModel } = data;
@@ -214,7 +213,6 @@ export class BmcanvasListViewComponent implements OnInit {
         // }
       });
   }
-
   private getData() {
     this.query = this.apollo
       .watchQuery({

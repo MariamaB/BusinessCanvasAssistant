@@ -1,22 +1,22 @@
-// const businessModels = require('./database');
+const businessModels = require('./database/database.js');
 const { neo4jgraphql } = require('neo4j-graphql-js');
 // const businessModels = neo4jgraphql;
 const { PubSub, withFilter } = require('graphql-subscriptions');
 // import { neo4jgraphql } from 'neo4j-graphql';
 const uuidv1 = require('uuid/v1');
 
-let businessModels = neo4jgraphql;
+// let businessModels = neo4jgraphql;
 
 const NEW_BUSINESS_MODEL = 'NEW_BUSINESS_MODEL';
 const DELETED_BUSINESS_MODEL = 'DELETED_BUSINESS_MODEL';
 const BUSINESS_MODEL_ON_EDIT = 'BUSINESS_MODEL_ON_EDIT';
 
 
-
 const resolvers = {
     Query: {
         businessModels: (parent, args, context, info) => {
-            return neo4jgraphql(parent, args, context, info);
+            // return neo4jgraphql(parent, args, context, info);
+            return businessModels;
         },
         businessModelsWith: async(parent, { searchString }, context, info) => {
             const session = context.driver.session();

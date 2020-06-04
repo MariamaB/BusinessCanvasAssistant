@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Frontend';
+
+  projects = true;
+  innovation = true;
+  pool = true;
+  subCanvas = true;
 }

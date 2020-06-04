@@ -125,5 +125,10 @@
       }
     }
   },
-  "defaultProject": "Frontend"
+  "defaultProject": "Frontend",
+  "schematics": {
+    "@schematics/angular:component": {
+      "displayBlock": false
+    }
+  }
 }
