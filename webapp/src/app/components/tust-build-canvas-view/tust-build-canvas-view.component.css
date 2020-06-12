@@ -1,0 +1,33 @@
+mat-list {
+  border-style: ridge;
+}
+
+.main {
+    width: auto;
+    height: 100%;
+    padding: 1%;
+    margin-top: 10%;
+  }
+
+.side {
+  align-self:center;
+  /* height: 50%; */
+}
+
+#middle {
+  /* height: 60%; */
+}
+
+h3 {
+  text-align: center;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    height: auto;
+}
+.content div {
+    flex: 1;
+    /* align-items: flex-start; */
+}

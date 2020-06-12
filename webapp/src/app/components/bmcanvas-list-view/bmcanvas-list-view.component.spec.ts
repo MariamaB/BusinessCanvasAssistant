@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BmcanvasListViewComponent } from "./bmcanvas-list-view.component";
+import { BmcanvasListViewComponent } from './bmcanvas-list-view.component';
 
-describe("BmcanvasListViewComponent", () => {
+describe('BmcanvasListViewComponent', () => {
   let component: BmcanvasListViewComponent;
   let fixture: ComponentFixture<BmcanvasListViewComponent>;
 
@@ -18,7 +18,7 @@ describe("BmcanvasListViewComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

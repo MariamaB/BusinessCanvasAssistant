@@ -18,6 +18,7 @@
             </mat-form-field>
         </form>
     </div>
+
     <div id="content-container">
         <mat-card class="bmc-card" [class.mat-elevation-z8]="true">
             <div class="grid-container">
@@ -26,7 +27,7 @@
                         <mat-card-title>Key Partners</mat-card-title>
                         <textarea style="height: 90%;" type="text" [value]="this.businessModelData.keyPartners" (input)="this.businessModelData.keyPartners = $event.target.value"></textarea>
                     </mat-card>
-
+                    
                     <mat-card class="half" [class.mat-elevation-z3]="true" id="item2">
                         <mat-card-title>Key Activities</mat-card-title>
                         <textarea style="height: 70%;" type="text" [value]="this.businessModelData.keyActivities" (input)="this.businessModelData.keyActivities = $event.target.value"></textarea>

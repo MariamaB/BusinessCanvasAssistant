@@ -1,0 +1,40 @@
+<mat-vertical-stepper [linear]="true">
+  <form [formGroup]="questionnaireForms">
+    <mat-step *ngFor="let question of questionnaire; index as i" [stepControl]="questionnaireForms">
+      <ng-template matStepLabel>{{question.category | uppercase}}</ng-template>
+      <mat-card>
+        <mat-card-title class="question-headline">{{question.question}}</mat-card-title>
+        <mat-card-content>
+          <mat-radio-group [formControlName]="question.category">
+            <div *ngFor="let answer of question.answers">
+              <mat-radio-button class="question-collection" [value]="answer.answer">{{answer.answer}}</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </mat-card-content>
+        <mat-card-actions class="button-collection">
+          <button *ngIf="i > 0" mat-flat-button matStepperPrevious color="primary" class="back-button">
+            <mat-icon>navigate_before</mat-icon>
+            Back
+          </button>
+          <button mat-flat-button matStepperNext color="primary" class="next-button">
+            Next
+            <mat-icon>navigate_next</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-step>
+    <mat-step label="DONE" [stepControl]="questionnaireForms">
+      <mat-card>
+        <mat-card-title class="question-headline">Fragebogen abgeschlossen</mat-card-title>
+        <mat-card-actions class="button-collection">
+          <button mat-flat-button matStepperPrevious color="primary" class="back-button">
+            <mat-icon>navigate_before</mat-icon>
+            Back
+          </button>
+          <button mat-flat-button color="primary" class="next-button" (click)="submitForm()">Abschicken</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-step>
+  </form>
+</mat-vertical-stepper>
+

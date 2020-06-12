@@ -1,47 +1,36 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { MatDialog } from "@angular/material";
-import { ErrorComponent } from "../error/error.component";
+import { IBusinessModel } from './../../share/interfaces/interfaces';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ErrorComponent } from '../error/error.component';
 
 @Component({
-  selector: "app-bmcanvas-view",
-  templateUrl: "./bmcanvas-view.component.html",
-  styleUrls: ["./bmcanvas-view.component.css"]
+  selector: 'app-bmcanvas-view',
+  templateUrl: './bmcanvas-view.component.html',
+  styleUrls: ['./bmcanvas-view.component.css']
 })
 export class BmcanvasViewComponent implements OnInit {
-  public businessModelData = {
-    id: "",
-    name: "",
-    keyPartners: "",
-    keyActivities: "",
-    valueProposition: "",
-    customerRelationships: "",
-    customerSegments: "",
-    keyResources: "",
-    channels: "",
-    costStructure: "",
-    revenueStreams: ""
-  };
+  public businessModelData: IBusinessModel;
+
 
   constructor(private router: Router) {}
   // constructor(private router: Router, private dialog: MatDialog) {}
 
   ngOnInit() {
-    if (JSON.parse(localStorage.getItem("businessModelData")) === null) {
+    if (JSON.parse(localStorage.getItem('businessModelData')) === null) {
       localStorage.setItem(
-        "businessModelData",
+        'businessModelData',
         JSON.stringify(history.state.data)
       );
     }
 
     this.businessModelData =
       history.state.data === undefined
-        ? JSON.parse(localStorage.getItem("businessModelData"))
+        ? JSON.parse(localStorage.getItem('businessModelData'))
         : history.state.data;
   }
 
   ngOnDestroy(): void {
-    localStorage.removeItem("businessModelData");
+    localStorage.removeItem('businessModelData');
   }
 
   passData() {
@@ -50,7 +39,7 @@ export class BmcanvasViewComponent implements OnInit {
     //     message: "Your login information are incorrect!"
     //   }
     // });
-    this.router.navigate(["/"], {
+    this.router.navigate(['/'], {
       state: { updatedData: this.businessModelData }
     });
   }

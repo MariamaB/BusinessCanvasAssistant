@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
-import { Apollo, QueryRef } from "apollo-angular";
-import { Subscription } from "rxjs";
-import gql from "graphql-tag";
+import { IBusinessModel } from './../../share/interfaces/interfaces';
+import { Component, OnInit } from '@angular/core';
+import { Apollo, QueryRef } from 'apollo-angular';
+import { Subscription } from 'rxjs';
+import gql from 'graphql-tag';
 
 const BUSINESS_MODEL_QUERY = gql`
   query businessModels {
@@ -101,16 +102,16 @@ const ON_NEW_BUSINESS_MODEL = gql`
 `;
 
 @Component({
-  selector: "app-bmcanvas-list-view",
-  templateUrl: "./bmcanvas-list-view.component.html",
-  styleUrls: ["./bmcanvas-list-view.component.css"]
+  selector: 'app-bmcanvas-list-view',
+  templateUrl: './bmcanvas-list-view.component.html',
+  styleUrls: ['./bmcanvas-list-view.component.css']
 })
 export class BmcanvasListViewComponent implements OnInit {
   businessModels: any[];
-  businessModel: {};
+  businessModel: IBusinessModel;
   loading = true;
   error: any;
-  public name = "My business name!";
+  public name = 'My business name!';
 
   private query: Subscription;
 
@@ -120,9 +121,9 @@ export class BmcanvasListViewComponent implements OnInit {
     this.getData();
     this.onNewBusinessModel();
 
-    console.log("onINit " + history.state.updatedData);
+    console.log('onINit ' + history.state.updatedData);
     if (history.state.updatedData !== undefined) {
-      console.log("passed data " + history.state.updatedData.name);
+      console.log('passed data ' + history.state.updatedData.name);
       // let updatedBusinessmodel = history.state.updatedData;
       // this.businessModels.map(bm =>
       //   bm.i === updatedBusinessmodel.id ? updatedBusinessmodel : bm
@@ -151,7 +152,7 @@ export class BmcanvasListViewComponent implements OnInit {
         },
         error => {
           console.log(error);
-          alert("Creating " + this.name + " failed!");
+          alert('Creating ' + this.name + ' failed!');
         }
       );
   }
@@ -173,7 +174,7 @@ export class BmcanvasListViewComponent implements OnInit {
         },
         error => {
           console.log(error);
-          alert("Deleting " + bmId.name + " failed!");
+          alert('Deleting ' + bmId.name + ' failed!');
         }
       );
   }
@@ -195,7 +196,7 @@ export class BmcanvasListViewComponent implements OnInit {
         },
         error => {
           console.log(error);
-          alert("Updating " + name + " failed!");
+          alert('Updating ' + name + ' failed!');
         }
       );
   }

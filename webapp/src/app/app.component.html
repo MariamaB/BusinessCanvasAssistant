@@ -23,9 +23,9 @@
           Start
         </a>
 
-        <a routerLink="project" routerLinkActive="active" mat-list-item (click)="projects = !projects">
-          <i class="material-icons-two-tone icon-space">folder</i>
-          Placeholder
+        <a routerLink="trust-build-canvas" routerLinkActive="active" mat-list-item (click)="projects = !projects">
+          <i class="material-icons-two-tone icon-space">star</i>
+          Trust Build Canvas
         </a>
         <div [hidden]="projects">
           <mat-nav-list class="sub-menu">
@@ -70,11 +70,11 @@
         </a>
         <div [hidden]="pool">
           <mat-nav-list class="sub-menu">
-            <a routerLink="bmcanvas-list-view" routerLinkActive="active" mat-list-item>Business Model Canvas</a>
+            <a routerLink="bmcanvas-list" routerLinkActive="active" mat-list-item>Business Model Canvas</a>
           </mat-nav-list>
         </div>
 
-        <a routerLink="business-model-questionnaire" routerLinkActive="active" mat-list-item>Business Model Fragebogen</a>
+        <a routerLink="questionnaire" routerLinkActive="active" mat-list-item>Business Model Fragebogen</a>
 
       </mat-nav-list>
     </mat-drawer>
