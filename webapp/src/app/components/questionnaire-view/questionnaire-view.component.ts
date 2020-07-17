@@ -39,17 +39,14 @@ export class QuestionnaireComponent implements OnInit {
 
   private setStartValues(): void {
     this.questionnaireForms.setValue({
-      stakeholder: this.questionnaire[0].answers[0].answer,
-      business: this.questionnaire[1].answers[0].answer,
-      relationship: this.questionnaire[2].answers[0].answer,
-      segment: this.questionnaire[3].answers[0].answer,
-      platform: this.questionnaire[4].answers[0].answer,
-      reimbursement: this.questionnaire[5].answers[0].answer,
-      role: this.questionnaire[6].answers[0].answer,
-      management: this.questionnaire[7].answers[0].answer,
-      product: this.questionnaire[8].answers[0].answer,
-      discipline: this.questionnaire[9].answers[0].answer,
-      treatment: this.questionnaire[10].answers[0].answer
+      participation: this.questionnaire[0].answers[0].answer,
+      identification: this.questionnaire[1].answers[0].answer,
+      matchmaking: this.questionnaire[2].answers[0].answer,
+      transaction: this.questionnaire[3].answers[0].answer,
+      incentivization: this.questionnaire[4].answers[0].answer,
+      interaction: this.questionnaire[5].answers[0].answer,
+      content: this.questionnaire[6].answers[0].answer,
+      privacy: this.questionnaire[7].answers[0].answer
     });
   }
 

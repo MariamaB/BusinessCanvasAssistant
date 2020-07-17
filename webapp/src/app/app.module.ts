@@ -8,12 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BmcanvasViewComponent } from './components/bmcanvas-view/bmcanvas-view.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import {HomeComponent} from './components/home/home.component';
-import {MaterialModule} from './material/material.module';
-import {AppRoutingModule} from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { MaterialModule } from './material/material.module';
+import { AppRoutingModule } from './app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ChartsModule } from 'ng2-charts';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TustBuildCanvasViewComponent } from './components/tust-build-canvas-view/tust-build-canvas-view.component';
 
 @NgModule({
@@ -37,10 +36,10 @@ import { TustBuildCanvasViewComponent } from './components/tust-build-canvas-vie
     FlexLayoutModule,
     FormsModule,
     // ChartsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   // entryComponents: [ErrorComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

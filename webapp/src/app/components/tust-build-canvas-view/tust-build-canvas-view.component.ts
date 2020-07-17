@@ -13,9 +13,10 @@ export class TustBuildCanvasViewComponent implements OnInit {
  ];
  public displayedColumns = [
    {user: 'test4'},
-   {user:'test5'},
-   {user:'test6'}
+   {user: 'test5'},
+   {user: 'test6'}
  ];
+
   constructor() { }
 
   ngOnInit(): void {

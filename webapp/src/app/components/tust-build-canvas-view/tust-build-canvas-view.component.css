@@ -1,21 +1,30 @@
-mat-list {
-  border-style: ridge;
+.main {
+  display: flex;
+  flex-direction: column;
+    /* height: 100%; */
+    /* background-color: aliceblue; */
 }
 
-.main {
-    width: auto;
-    height: 100%;
-    padding: 1%;
-    margin-top: 10%;
-  }
-
 .side {
-  align-self:center;
-  /* height: 50%; */
+  /* display: flex; */
+  flex: 2;
+  /* flex-direction: column; */
+  justify-content: center;
+
+  /* background-color: aqua; */
+}
+
+.side mat-card {
+  margin-bottom: 10%;
+  /* width: 250px; */
+  height: 150px;
 }
 
 #middle {
-  /* height: 60%; */
+  align-self: center;
+  flex: 2;
+  /* width: 350; */
+  height: 200px;
 }
 
 h3 {
@@ -23,11 +32,32 @@ h3 {
 }
 
 .content {
-    display: flex;
-    align-items: flex-start;
-    height: auto;
+  display: flex;
+  justify-content: space-evenly;
 }
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  height: 150px;
+  bottom: 0;
+  /* justify-content: space-between; */
+}
+
+.bottom mat-card {
+  flex: 2;
+  width: 250px;
+}
+
 .content div {
-    flex: 1;
-    /* align-items: flex-start; */
+  /* flex: 1; */
+  /* align-items: flex-start; */
+}
+
+.space {
+  flex: 1;
+}
+
+p {
+  text-align: center;
 }

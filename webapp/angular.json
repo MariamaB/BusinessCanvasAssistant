@@ -130,5 +130,8 @@
     "@schematics/angular:component": {
       "displayBlock": false
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

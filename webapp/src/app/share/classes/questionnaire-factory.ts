@@ -5,7 +5,7 @@ export class QuestionnaireFactory {
   public static createBusinessQuestionnaire(): IQuestion[] {
     return [
       {
-        category: 'stakeholder',
+        category: 'participation',
         question: 'Welche Art von Stakeholder sind Sie?',
         answers: [
           {
@@ -41,7 +41,7 @@ export class QuestionnaireFactory {
         ]
       },
       {
-        category: 'business',
+        category: 'identification',
         question: 'In welcher Branche sind Sie tätig?',
         answers: [
           {
@@ -68,7 +68,7 @@ export class QuestionnaireFactory {
         ]
       },
       {
-        category: 'relationship',
+        category: 'matchmaking',
         question: 'Welche Art von Kundenbeziehungen hat Ihr Geschäft?',
         answers: [
           {
@@ -86,7 +86,7 @@ export class QuestionnaireFactory {
         ]
       },
       {
-        category: 'segment',
+        category: 'transaction',
         question: 'Wo ist Ihr Geschäft tätig?',
         answers: [
           {
@@ -101,7 +101,7 @@ export class QuestionnaireFactory {
         ]
       },
       {
-        category: 'platform',
+        category: 'incentivization',
         question: 'Was für eine Plattformart betreiben Sie?',
         answers: [
           {
@@ -116,7 +116,7 @@ export class QuestionnaireFactory {
         ]
       },
       {
-        category: 'reimbursement',
+        category: 'interaction',
         question: 'Welche Art von Rückerstattung bieten Sie an?',
         answers: [
           {
@@ -128,7 +128,7 @@ export class QuestionnaireFactory {
         ]
       },
       {
-        category: 'role',
+        category: 'content',
         question: 'Welche Rolle in der Medizintechnik bekleiden Sie?',
         answers: [
           {
@@ -170,7 +170,7 @@ export class QuestionnaireFactory {
         ]
       },
       {
-        category: 'management',
+        category: 'privacy',
         question: 'Welche Art von Qualitätsmanagement betreiben Sie?',
         answers: [
           {
@@ -187,111 +187,6 @@ export class QuestionnaireFactory {
           },
           {
             answer: 'QMS (ISO 27001)'
-          }
-        ]
-      },
-      {
-        category: 'product',
-        question: 'Welche Art von Produkten / Services bieten Sie an?',
-        answers: [
-          {
-            answer: 'Digitaler Service / SW'
-          },
-          {
-            answer: 'Physisch / vor Ort'
-          },
-          {
-            answer: 'Persönlicher Service'
-          },
-          {
-            answer: 'IoT-Service, KI-Service'
-          },
-          {
-            answer: 'Medizinprodukt'
-          },
-          {
-            answer: 'Konsumerprodukt'
-          },
-          {
-            answer: 'Industrieprodukt'
-          },
-          {
-            answer: 'Komponente'
-          },
-          {
-            answer: 'Hilfsmittel'
-          },
-          {
-            answer: 'KI-Modell, Algorithmus'
-          },
-          {
-            answer: 'Infrastruktur'
-          },
-          {
-            answer: 'Verfahren, Methode'
-          },
-          {
-            answer: 'Daten'
-          }
-        ]
-      },
-      {
-        category: 'discipline',
-        question: 'Welche Fachdiziplin bedienen Sie?',
-        answers: [
-          {
-            answer: 'Kardiologie'
-          },
-          {
-            answer: 'Orthopädie'
-          },
-          {
-            answer: 'Radiologie'
-          },
-          {
-            answer: 'Pathologie'
-          },
-          {
-            answer: 'Psychiatrie',
-          },
-          {
-            answer: 'Ernährung',
-          },
-          {
-            answer: 'BGM'
-          },
-          {
-            answer: 'Sonstiges Fachgebiet'
-          }
-        ]
-      },
-      {
-        category: 'treatment',
-        question: 'Welche Behandlungsphase bieten Sie an?',
-        answers: [
-          {
-            answer: 'Information'
-          },
-          {
-            answer: 'Prävention'
-          },
-          {
-            answer: 'Wohlbefinden'
-          },
-          {
-            answer: 'Diagnose'
-          },
-          {
-            answer: 'Behandlung'
-          },
-          {
-            answer: 'Rückfallprophylaxe'
-          },
-          {
-            answer: 'Reha'
-          },
-          {
-            answer: 'Pflege'
           }
         ]
       }

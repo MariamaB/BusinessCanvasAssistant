@@ -104,7 +104,7 @@ const ON_NEW_BUSINESS_MODEL = gql`
 @Component({
   selector: 'app-bmcanvas-list-view',
   templateUrl: './bmcanvas-list-view.component.html',
-  styleUrls: ['./bmcanvas-list-view.component.css']
+  styleUrls: ['./bmcanvas-list-view.component.css'],
 })
 export class BmcanvasListViewComponent implements OnInit {
   businessModels: any[];
@@ -142,15 +142,15 @@ export class BmcanvasListViewComponent implements OnInit {
       .mutate({
         mutation: BUSINESS_MODEL_CREATE,
         variables: {
-          name: this.name
-        }
+          name: this.name,
+        },
       })
       .subscribe(
         ({ data }) => {
-          const { createBusinessModel } = data;
+          const { createBusinessModel }: any = data;
           this.businessModels.push(createBusinessModel);
         },
-        error => {
+        (error) => {
           console.log(error);
           alert('Creating ' + this.name + ' failed!');
         }
@@ -162,17 +162,17 @@ export class BmcanvasListViewComponent implements OnInit {
       .mutate({
         mutation: BUSINESS_MODEL_DELETE,
         variables: {
-          id: bmId
-        }
+          id: bmId,
+        },
       })
       .subscribe(
         ({ data }) => {
-          const { deleteBusinessModel } = data;
+          const { deleteBusinessModel }: any = data;
           this.businessModels = deleteBusinessModel
-            ? this.businessModels.filter(d => d.id !== deleteBusinessModel.id)
+            ? this.businessModels.filter((d) => d.id !== deleteBusinessModel.id)
             : this.businessModels;
         },
-        error => {
+        (error) => {
           console.log(error);
           alert('Deleting ' + bmId.name + ' failed!');
         }
@@ -184,17 +184,17 @@ export class BmcanvasListViewComponent implements OnInit {
       .mutate({
         mutation: BUSINESS_MODEL_EDIT,
         variables: {
-          businessModel
-        }
+          businessModel,
+        },
       })
       .subscribe(
         ({ data }) => {
-          const { editBusinessModel } = data;
-          this.businessModels.map(bm =>
+          const { editBusinessModel }: any = data;
+          this.businessModels.map((bm) =>
             bm.id === editBusinessModel.id ? editBusinessModel : bm
           );
         },
-        error => {
+        (error) => {
           console.log(error);
           alert('Updating ' + name + ' failed!');
         }
@@ -205,10 +205,10 @@ export class BmcanvasListViewComponent implements OnInit {
     this.query = this.apollo
       .subscribe({
         query: ON_NEW_BUSINESS_MODEL,
-        variables: {}
+        variables: {},
       })
       .subscribe(({ data }) => {
-        const { newBusinessModel } = data;
+        const { newBusinessModel }: any = data;
         // if (!this.businessModels.some(bm => bm.id === newBusinessModel.id)) {
         this.businessModels.push(newBusinessModel);
         // }
@@ -217,10 +217,10 @@ export class BmcanvasListViewComponent implements OnInit {
   private getData() {
     this.query = this.apollo
       .watchQuery({
-        query: BUSINESS_MODEL_QUERY
+        query: BUSINESS_MODEL_QUERY,
       })
       .valueChanges.subscribe(({ data }) => {
-        const { businessModels } = data;
+        const { businessModels }: any = data;
         this.businessModels = businessModels;
       });
   }
@@ -237,7 +237,7 @@ export class BmcanvasListViewComponent implements OnInit {
       keyResources: businessModel.keyResources,
       channels: businessModel.channels,
       costStructure: businessModel.costStructure,
-      revenueStreams: businessModel.revenueStreams
+      revenueStreams: businessModel.revenueStreams,
     });
   }
 }
