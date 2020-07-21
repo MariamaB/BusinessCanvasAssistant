@@ -2,104 +2,13 @@ import { IBusinessModel } from './../../share/interfaces/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Subscription } from 'rxjs';
-import gql from 'graphql-tag';
+import { BUSINESS_MODEL_QUERY } from 'src/app/graphql/query';
+import mutations from '../../graphql/mutation';
+const { BUSINESS_MODEL_CREATE, BUSINESS_MODEL_DELETE, BUSINESS_MODEL_EDIT } = mutations;
+import {ON_NEW_BUSINESS_MODEL} from '../../graphql/subscription';
 
-const BUSINESS_MODEL_QUERY = gql`
-  query businessModels {
-    businessModels {
-      id
-      name
-      keyPartners
-      keyActivities
-      valueProposition
-      customerRelationships
-      customerSegments
-      keyResources
-      channels
-      costStructure
-      revenueStreams
-    }
-  }
-`;
 
-const BUSINESS_MODEL_CREATE = gql`
-  mutation createBusinessModel($name: String!) {
-    createBusinessModel(name: $name) {
-      id
-      name
-      keyPartners
-      keyActivities
-      valueProposition
-      customerRelationships
-      customerSegments
-      keyResources
-      channels
-      costStructure
-      revenueStreams
-    }
-  }
-`;
 
-const BUSINESS_MODEL_DELETE = gql`
-  mutation deleteBusinessModel($id: ID!) {
-    deleteBusinessModel(id: $id) {
-      id
-    }
-  }
-`;
-const BUSINESS_MODEL_EDIT = gql`
-  mutation editBusinessModel($businessModel: BMInput) {
-    editBusinessModel(businessModel: $businessModel) {
-      id
-      name
-      keyPartners
-      keyActivities
-      valueProposition
-      customerRelationships
-      customerSegments
-      keyResources
-      channels
-      costStructure
-      revenueStreams
-    }
-  }
-`;
-
-const BUSINESS_MODEL_ON_EDIT = gql`
-  subscription businessModelOnEdit {
-    businessModelOnEdit {
-      id
-      name
-      keyPartners
-      keyActivities
-      valueProposition
-      customerRelationships
-      customerSegments
-      keyResources
-      channels
-      costStructure
-      revenueStreams
-    }
-  }
-`;
-
-const ON_NEW_BUSINESS_MODEL = gql`
-  subscription newBusinessModel {
-    newBusinessModel {
-      id
-      name
-      keyPartners
-      keyActivities
-      valueProposition
-      customerRelationships
-      customerSegments
-      keyResources
-      channels
-      costStructure
-      revenueStreams
-    }
-  }
-`;
 
 @Component({
   selector: 'app-bmcanvas-list-view',

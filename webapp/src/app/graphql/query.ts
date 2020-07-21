@@ -1,6 +1,6 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
-const BUSINESS_MODEL_QUERY = gql`
+export const BUSINESS_MODEL_QUERY = gql`
   query businessModels($searchString: String) {
     businessModels(searchString: $searchString) {
       id
