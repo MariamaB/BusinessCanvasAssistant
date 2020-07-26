@@ -26,27 +26,21 @@ export class QuestionnaireComponent implements OnInit {
 
   private initForm(): void {
     this.questionnaireForms = this.fb.group({
-      participation: ['', Validators.required],
-      identification: ['', Validators.required],
-      matchmaking: ['', Validators.required],
-      transaction: ['', Validators.required],
-      incentivization: ['', Validators.required],
-      interaction: ['', Validators.required],
-      content: ['', Validators.required],
-      privacy: ['', Validators.required]
+      business: ['', Validators.required],
+      product: ['', Validators.required],
+      relationship: ['', Validators.required],
+      partner: ['', Validators.required],
+      platform: ['', Validators.required]
     });
   }
 
   private setStartValues(): void {
     this.questionnaireForms.setValue({
-      participation: this.questionnaire[0].answers[0].answer,
-      identification: this.questionnaire[1].answers[0].answer,
-      matchmaking: this.questionnaire[2].answers[0].answer,
-      transaction: this.questionnaire[3].answers[0].answer,
-      incentivization: this.questionnaire[4].answers[0].answer,
-      interaction: this.questionnaire[5].answers[0].answer,
-      content: this.questionnaire[6].answers[0].answer,
-      privacy: this.questionnaire[7].answers[0].answer
+      business: this.questionnaire[0].answers[0].answer,
+      product: this.questionnaire[1].answers[0].answer,
+      relationship: this.questionnaire[2].answers[0].answer,
+      partner: this.questionnaire[3].answers[0].answer,
+      platform: this.questionnaire[3].answers[0].answer
     });
   }
 
