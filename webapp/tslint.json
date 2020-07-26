@@ -55,8 +55,8 @@
             true,
             "check-open-brace",
             "check-catch",
-            "check-else"
-            // "check-whitespace"
+            "check-else",
+            "check-whitespace"
         ],
         "prefer-const": true,
         "quotemark": [true, "single"],
@@ -89,7 +89,7 @@
         "use-host-property-decorator": true,
         "no-input-rename": true,
         "no-output-rename": true,
-        // "use-life-cycle-interface": true,
+        "use-life-cycle-interface": true,
         "use-pipe-transform-interface": true,
         "component-class-suffix": true,
         "directive-class-suffix": true

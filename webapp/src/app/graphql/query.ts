@@ -1,6 +1,26 @@
 import gql from 'graphql-tag';
 
-export const BUSINESS_MODEL_QUERY = gql`
+const BUSINESS_MODEL_QUERY = gql`
+  query businessModels {
+    businessModels {
+      id
+      title
+      content {
+        keyPartners
+        keyActivities
+        valueProposition
+        customerRelationships
+        customerSegments
+        keyResources
+        channels
+        costStructure
+        revenueStreams
+      }
+    }
+  }
+`;
+
+ const BUSINESS_MODEL_SEARCH_QUERY = gql`
   query businessModels($searchString: String) {
     businessModels(searchString: $searchString) {
       id
@@ -19,3 +39,4 @@ export const BUSINESS_MODEL_QUERY = gql`
     }
   }
 `;
+export default { BUSINESS_MODEL_SEARCH_QUERY, BUSINESS_MODEL_QUERY};
