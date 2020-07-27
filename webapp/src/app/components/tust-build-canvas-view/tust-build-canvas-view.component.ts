@@ -12,12 +12,12 @@ export class TustBuildCanvasViewComponent implements OnInit {
    relationship: '',
    partner: '',
    platform: '',
-
  };
 
   constructor() { }
 
   ngOnInit(): void {
+
     console.log(JSON.stringify(history.state.updatedData, null, 2));
     if (history.state.updatedData !== undefined) {
       this.dataSource = history.state.updatedData;
@@ -25,4 +25,6 @@ export class TustBuildCanvasViewComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+  }
 }
