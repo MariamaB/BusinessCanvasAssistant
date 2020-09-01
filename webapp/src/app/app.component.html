@@ -1,10 +1,10 @@
-<div style="height: 80vh;">
+<div style="height: 100;">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
         <mat-icon>menu</mat-icon>
       </button>
-      <span class="center-headline">Dashboard</span>
+      <span class="center-headline">{{headline}}</span>
       <mat-menu #settings>
         <button mat-menu-item>Settings</button>
         <button mat-menu-item>Help</button>
@@ -23,7 +23,7 @@
           Start
         </a>
 
-        <a routerLink="trust-build-canvas" routerLinkActive="active" mat-list-item (click)="projects = !projects">
+        <a routerLink="trust-build-canvas" routerLinkActive="active" mat-list-item (click)="this.switchToTbc()">
           <i class="material-icons-two-tone icon-space">star</i>
           Trust Build Canvas
         </a>
@@ -49,7 +49,8 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <!-- Projects loaded from backend could be displayed here -->
-                <a routerLink="created-dashboard" routerLinkActive="active" mat-list-item (click)="subCanvas = !subCanvas">Dashboard</a>
+                <a routerLink="created-dashboard" routerLinkActive="active" mat-list-item
+                  (click)="subCanvas = !subCanvas">Dashboard</a>
                 <div class="sub-sub-menu" [hidden]="subCanvas">
                   <a routerLink="mvp" routerLinkActive="active" mat-list-item>Placeholder</a>
                 </div>
@@ -58,7 +59,8 @@
           </mat-nav-list>
         </div>
 
-        <a routerLink="innovation-process" routerLinkActive="active" mat-list-item (click)="innovation = !innovation">Placeholder 4</a>
+        <a routerLink="innovation-process" routerLinkActive="active" mat-list-item
+          (click)="innovation = !innovation">Placeholder 4</a>
         <div [hidden]="innovation">
           <mat-nav-list class="sub-menu">
             <a routerLink="understand" routerLinkActive="active" mat-list-item>Placeholder 5</a>
@@ -78,6 +80,8 @@
 
       </mat-nav-list>
     </mat-drawer>
-    <mat-drawer-content fxFlexFill><router-outlet></router-outlet></mat-drawer-content>
+    <mat-drawer-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
   </mat-drawer-container>
 </div>

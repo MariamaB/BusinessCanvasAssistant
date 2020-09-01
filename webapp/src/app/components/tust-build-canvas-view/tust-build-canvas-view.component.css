@@ -1,8 +1,9 @@
 .main {
   display: flex;
   flex-direction: column;
-    /* height: 100%; */
-    /* background-color: aliceblue; */
+  padding: 5%;
+  /* height: 100%; */
+  /* background-color: aliceblue; */
 }
 
 .side {
@@ -13,7 +14,8 @@
 
   /* background-color: aqua; */
 }
-
+mat-card {
+}
 .side mat-card {
   margin-bottom: 10%;
   /* width: 250px; */
@@ -21,10 +23,9 @@
 }
 
 #middle {
-  align-self: center;
+  align-self: flex-start;
   flex: 2;
-  /* width: 350; */
-  height: 200px;
+  height: 350px;
 }
 
 h3 {
@@ -38,15 +39,18 @@ h3 {
 
 .bottom {
   display: flex;
+  flex: 1;
   flex-direction: row;
   height: 150px;
+  align-self: flex-start;
   bottom: 0;
-  /* justify-content: space-between; */
+  justify-content: space-between;
+  width: 100%;
 }
 
 .bottom mat-card {
-  flex: 2;
-  width: 250px;
+  flex: 3.8;
+  /* width: 250px; */
 }
 
 .content div {
@@ -56,8 +60,10 @@ h3 {
 
 .space {
   flex: 1;
+  /* background-color: brown; */
 }
 
+/* background-color: brown; */
 p {
   text-align: center;
 }
