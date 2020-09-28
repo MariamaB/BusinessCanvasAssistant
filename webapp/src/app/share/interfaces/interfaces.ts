@@ -1,15 +1,24 @@
-
-
-export interface IQuestion {
+export interface IQQuestion {
   category: string;
   question: string;
   answers: IAnswer[];
+}
+export interface ITrustBuildCanvas {
+  categories: ITrustBuildCategory[];
+}
+
+interface ITrustBuildCategory {
+  categoryTitle: string;
+  questions: IQuestion[];
+}
+interface IQuestion {
+  question: string;
+  answer: string;
 }
 
 export interface IAnswer {
   answer: string;
 }
-
 
 export interface IBusinessModel {
   id: string;

@@ -2,20 +2,29 @@
     <div class="content">
         <div class="space"></div>
         <div class="side">
-
-            <mat-card>
+            <mat-card class="side-mat-card">
                 <mat-card-title>Applikation</mat-card-title>
                 <mat-card-subtitle>(z.B. Patient)</mat-card-subtitle>
                 <mat-card-content>
-                    <p>{{this.dataSource.business}}</p>
+                    <div *ngFor="let section of this.trustBuildCanvas.categories[1].sections">
+                        <label>{{ section.section }}</label>
+                        <mat-card class="answer-panel">
+                            <label>{{ this.dataSource.business }}</label>
+                        </mat-card>
+                    </div>
                 </mat-card-content>
             </mat-card>
 
-            <mat-card>
+            <mat-card class="side-mat-card">
                 <mat-card-title>Gesundheit/Therapie</mat-card-title>
                 <mat-card-subtitle>(z.B. Krankenversicherungen)</mat-card-subtitle>
                 <mat-card-content>
-                    <p>{{this.dataSource.product}}</p>
+                    <div *ngFor="let section of this.trustBuildCanvas.categories[2].sections">
+                        <label>{{ section.section }}</label>
+                        <mat-card class="answer-panel">
+                            <label>{{ this.dataSource.business }}</label>
+                        </mat-card>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </div>
@@ -25,25 +34,40 @@
             <mat-card-title>Plattform-Betreiber</mat-card-title>
             <mat-card-subtitle>(z.B. MentalHealth UG)</mat-card-subtitle>
             <mat-card-content>
-                <p>{{this.dataSource.relationship}}</p>
+                <div *ngFor="let section of this.trustBuildCanvas.categories[0].sections">
+                    <label>{{ section.section }}</label>
+                    <mat-card class="answer-panel">
+                        <label>{{ this.dataSource.business }}</label>
+                    </mat-card>
+                </div>
             </mat-card-content>
         </mat-card>
 
         <div class="space"></div>
         <div class="side">
-            <mat-card>
+            <mat-card class="side-mat-card">
                 <mat-card-title>Daten</mat-card-title>
                 <mat-card-subtitle>(z.B. Psychotherapeut)</mat-card-subtitle>
                 <mat-card-content>
-                    <p>{{this.dataSource.partner}}</p>
+                    <div *ngFor="let section of this.trustBuildCanvas.categories[3].sections">
+                        <label>{{ section.section }}</label>
+                        <mat-card class="answer-panel">
+                            <label>{{ this.dataSource.business }}</label>
+                        </mat-card>
+                    </div>
                 </mat-card-content>
             </mat-card>
 
-            <mat-card>
+            <mat-card class="side-mat-card">
                 <mat-card-title>Infrastruktur</mat-card-title>
                 <mat-card-subtitle>(z.B. Medical-App-Hersteller)</mat-card-subtitle>
                 <mat-card-content>
-                    <p>{{this.dataSource.platform}}</p>
+                    <div *ngFor="let section of this.trustBuildCanvas.categories[4].sections">
+                        <label>{{ section.section }}</label>
+                        <mat-card class="answer-panel">
+                            <label>{{ this.dataSource.business }}</label>
+                        </mat-card>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </div>

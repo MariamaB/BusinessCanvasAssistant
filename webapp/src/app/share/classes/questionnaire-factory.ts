@@ -1,119 +1,92 @@
 import { IQuestion } from '../interfaces/interfaces';
 
-
 export class QuestionnaireFactory {
   public static createBusinessQuestionnaire(): IQuestion[] {
     return [
       {
-        category: 'business',
-        question: 'Welche Art von Stakeholder sind Sie?',
+        category: 'Plattform-Betreiber',
+        question: 'Welche Mission hat das Unternehmen',
         answers: [
           {
-            answer: 'Betreiber / Orchestrator (alleiniger)'
+            answer:
+              'z.B. Online-Psychotherapie für GKV-Versicherte mit großer Nachhaltigkeit',
           },
-          {
-            answer: 'Betreiber / Orchestrator (in Kooperation)',
-          },
-          {
-            answer: 'Anbieter / Produzent'
-          },
-          {
-            answer: 'Dritt-Anbieter / Partner'
-          },
-          {
-            answer: 'Unterstützer / Zulieferer'
-          },
-          {
-            answer: 'Innovationspartner (Ökosystem)'
-          },
-          {
-            answer: 'Investor (Plattform)'
-          },
-          {
-            answer: 'Sonstiger Plattform-Stakeholder'
-          },
-          {
-            answer: 'Traditionelles Geschäftsmodell'
-          },
-          {
-            answer: 'Geschäftsidee'
-          }
-        ]
+        ],
       },
       {
-        category: 'product',
+        category: 'Applikation',
         question: 'In welcher Branche sind Sie tätig?',
         answers: [
           {
-            answer: 'Medizintechnik'
+            answer: 'Medizintechnik',
           },
           {
-            answer: 'Biotech'
+            answer: 'Biotech',
           },
           {
-            answer: 'Smart Home'
+            answer: 'Smart Home',
           },
           {
-            answer: 'Pharma'
+            answer: 'Pharma',
           },
           {
-            answer: 'Maschinenbau'
+            answer: 'Maschinenbau',
           },
           {
-            answer: 'Automobilbau'
+            answer: 'Automobilbau',
           },
           {
-            answer: 'Sonstige Branche'
-          }
-        ]
+            answer: 'Sonstige Branche',
+          },
+        ],
       },
       {
-        category: 'relationship',
+        category: 'Gesundheit / Therapie',
         question: 'Welche Art von Kundenbeziehungen hat Ihr Geschäft?',
         answers: [
           {
-            answer: 'B2B (B2B2B)'
+            answer: 'B2B (B2B2B)',
           },
           {
-            answer: 'B2C (B2B2C)'
+            answer: 'B2C (B2B2C)',
           },
           {
-            answer: 'C2B (C2B2B)'
+            answer: 'C2B (C2B2B)',
           },
           {
-            answer: 'C2C (C2B2C)'
-          }
-        ]
+            answer: 'C2C (C2B2C)',
+          },
+        ],
       },
       {
-        category: 'partner',
+        category: 'Daten',
         question: 'Wo ist Ihr Geschäft tätig?',
         answers: [
           {
-            answer: 'National'
+            answer: 'National',
           },
           {
-            answer: 'Europa (EU, DACH)'
+            answer: 'Europa (EU, DACH)',
           },
           {
-            answer: 'USA, China'
-          }
-        ]
+            answer: 'USA, China',
+          },
+        ],
       },
       {
-        category: 'platform',
+        category: 'Infrastruktur',
         question: 'Was für eine Plattformart betreiben Sie?',
         answers: [
           {
-            answer: 'Transaktions-zentriert'
+            answer: 'Transaktions-zentriert',
           },
           {
-            answer: 'Datenzentriert'
+            answer: 'Datenzentriert',
           },
           {
-            answer: 'Innovations-zentriert'
-          }
-        ]
+            answer: 'Innovations-zentriert',
+          },
+        ],
       },
     ];
   }
